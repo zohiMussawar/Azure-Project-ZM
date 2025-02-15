@@ -1,0 +1,18 @@
+﻿@* @{
+    ViewData["Title"] = "Home Page";
+} *@
+
+@model IEnumerable<Article>
+    <header><h2>Published Articles</h2></header>
+    <main class="blog-container">
+    @foreach(var articles in Model){
+        <div>
+            <article class="blog-post">
+            <h2>@articles.Title</h2>
+            <p class="blog-meta">@articles.StartDate.ToString("MMMM dd, yyyy") - @articles.EndDate.ToString("MMMM dd, yyyy")</p>
+            <p class="blog-content">@articles.Body.Substring(0,Math.Min(articles.Body.Length,100))...</p>
+             <a  asp-controller="Articles" asp-action="Details" asp-route-id="@articles.ArticleId" class="read-more">Read More</a>
+             </article> 
+           </div>
+    }</main>
+   

@@ -1,0 +1,21 @@
+@model Blog1.Models.Article
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<br>
+<div>
+   
+    <h2>@Model.Title</h2>
+    <p>@Model.Body</p>
+    <p><strong>Published:</strong>
+    <strong>Start Date:</strong>
+    @Model.StartDate.ToShortDateString() - 
+    <strong>End Date:</strong>
+    @Model.EndDate.ToShortDateString()</p>
+    <hr />
+    
+</div>
+

@@ -1,0 +1,42 @@
+﻿
+
+<div class="container">
+    <h2>Admin Dashboard</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>@user.Status</td>
+                    <td>@user.Role</td>
+                    <td>
+                        @if (user.Status == "Pending")
+                        {
+                            <form asp-action="ApproveContributor" asp-route-id="@user.Id">
+                                <button type="submit" class="btn btn-primary">Approve</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-action="UpdateRole" asp-route-id="@user.Id" asp-route-role="Contributor">
+                                <button type="submit" class="btn btn-primary">Make Contributor</button>
+                            </form>
+                            <form asp-action="UpdateRole" asp-route-id="@user.Id" asp-route-role="Admin">
+                                <button type="submit" class="btn btn-primary">Make Admin</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
