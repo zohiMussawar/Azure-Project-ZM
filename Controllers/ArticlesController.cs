@@ -24,11 +24,7 @@ namespace Blog1.Controllers
         // GET: Articles
         public async Task<IActionResult> Index()
         {
-            // var username=User.Identity.Name;
-            // var articles=await _context.Articles
-            //             .Where(a => a.ContributorUsername==username)
-            //             .ToListAsync();
-
+    
              return View(await _context.Article.ToListAsync());
         }
 
@@ -39,9 +35,7 @@ namespace Blog1.Controllers
             var article=await _context.Articles.FindAsync(id);
             if(article== null) return NotFound();
             return View(article);
-             // var article = await _context.Article
-            //     .FirstOrDefaultAsync(m => m.ArticleId == id);
-          
+
         }
 
         // GET: Articles/Create
@@ -57,13 +51,7 @@ namespace Blog1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ArticleId,Title,Body,CreateDate,StartDate,EndDate")] Article article)
         {
-            // if (!ModelState.IsValid) return View(article);
-            
-            //  article.ContributorUsername=User.Identity.Name;
-            //     article.CreateDate=DateTime.Now;
-            //     _context.Add(article);
-            //     await _context.SaveChangesAsync();
-            //     return RedirectToAction(nameof(Index));
+          
              if (ModelState.IsValid)
             {
                
@@ -89,11 +77,7 @@ namespace Blog1.Controllers
                 return NotFound();
             }
             return View(article);
-            // var article = await _context.Article.FindAsync(id);
-            // if (article == null || article.ContributorUsername != User.Identity.Name)
-            // {
-            //     return Unauthorized();
-            // }
+     
         }
 
         // POST: Articles/Edit/5
@@ -129,23 +113,7 @@ namespace Blog1.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(article);
-            // if (id != model.ArticleId)
-            // {
-            //     return Unauthorized();
-            // }
-
-            // if (!ModelState.IsValid) return View(model);
-            // var article= await _context.Articles.FindAsync(model.ArticleId);
-            // if(article==null || article.ContributorUsername !=User.Identity.Name)
-            //     return Unauthorized();
-            //     article.Title=model.Title;
-            //     article.Body=model.Body;
-            //     article.StartDate=model.StartDate;
-            //     article.EndDate=model.EndDate;
-            //     await _context.SaveChangesAsync();
-            //     return RedirectToAction("Index");
-            // {
-            
+        
         }
 
         // GET: Articles/Delete/5

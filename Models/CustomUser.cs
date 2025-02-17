@@ -6,8 +6,7 @@ namespace Blog1.Models;
 
 public class CustomUser : IdentityUser {
   public CustomUser() : base() { }
-  // [Key]
-  // public int ContributorId{get;set;}
+
 [Required]
   public string? FirstName { get; set; }
   [Required]

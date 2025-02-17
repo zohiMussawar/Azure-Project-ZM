@@ -10,9 +10,7 @@ namespace Blog1.Controllers;
 
 public class HomeController : Controller
 {
-    // private readonly ILogger<HomeController> _logger;
 private readonly ApplicationDbContext _context;
-// private readonly UserManager<CustomUser> _userManager;
 public HomeController(ApplicationDbContext context){
     _context=context;
    
@@ -27,9 +25,6 @@ var articles=await _context.Article
         .ToListAsync();
         return View(articles);
 }
-    
-
- 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

@@ -22,6 +22,4 @@ public DateTime EndDate{get; set;}
 // [Required]
 // public string ContributorUsername{get;set;}
 
-// public CustomUser Contributor{get;set;}
-
 }
