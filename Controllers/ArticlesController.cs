@@ -29,8 +29,6 @@ namespace Blog1.Controllers
             //             .Where(a => a.ContributorUsername==username)
             //             .ToListAsync();
 
-
-            // return View(articles);
              return View(await _context.Article.ToListAsync());
         }
 
@@ -41,19 +39,9 @@ namespace Blog1.Controllers
             var article=await _context.Articles.FindAsync(id);
             if(article== null) return NotFound();
             return View(article);
-            //  if (id == null)
-            // {
-            //     return NotFound();
-            // }
-
-            // var article = await _context.Article
+             // var article = await _context.Article
             //     .FirstOrDefaultAsync(m => m.ArticleId == id);
-            // if (article == null)
-            // {
-            //     return NotFound();
-            // }
-
-            // return View(article);
+          
         }
 
         // GET: Articles/Create
@@ -101,17 +89,11 @@ namespace Blog1.Controllers
                 return NotFound();
             }
             return View(article);
-            // if (id == null)
-            // {
-            //     return NotFound();
-            // }
-
             // var article = await _context.Article.FindAsync(id);
             // if (article == null || article.ContributorUsername != User.Identity.Name)
             // {
             //     return Unauthorized();
             // }
-            // return View(article);
         }
 
         // POST: Articles/Edit/5

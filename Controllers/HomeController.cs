@@ -17,17 +17,9 @@ public HomeController(ApplicationDbContext context){
     _context=context;
    
 }
-// public HomeController(UserManager<CustomUser> userManager){ _userManager=userManager;}
-    // public HomeController(ILogger<HomeController> logger)
-    // {
-    //     _logger = logger;
-    // }
 public async Task<IActionResult> Index(){
 
-    // var user=await _userManager.GetUserAsync(User);
-    // if(user!=null){
-    //   
-    // }
+    
 var today =DateTime.Now;
 var articles=await _context.Article
         .Where(articles=>articles.StartDate<=today && articles.EndDate>=today)
@@ -35,15 +27,8 @@ var articles=await _context.Article
         .ToListAsync();
         return View(articles);
 }
-    // public IActionResult Index()
-    // {
-    //     return View();
-    // }
+    
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
  
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
@@ -57,6 +42,8 @@ var articles=await _context.Article
             return View(users);
         }
 
+// Handle Admin Dashboard
+// Like Approve Candidates
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> ApproveContributor(string id)
@@ -69,7 +56,7 @@ var articles=await _context.Article
             }
             return RedirectToAction("AdminDashboard");
         }
-
+// Here is assign the role to the Candidates
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> UpdateRole(string id, string role)
